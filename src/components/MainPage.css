@@ -1,0 +1,269 @@
+.interactive-room {
+  width: 100%;
+  height: 100%;
+  background-size: cover;
+  background-position: center;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Base Hotspot Styling */
+.hotspot {
+  position: absolute;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: transparent;
+  cursor: pointer;
+  z-index: 10;
+}
+
+/* Floating Icon Animation */
+.floating-icon {
+  width: 80px;
+  /* sesuaikan ukuran sesuai gambar kamu */
+  height: auto;
+  object-fit: contain;
+  animation: float 3.5s ease-in-out infinite;
+  transition: transform 0.3s ease;
+  filter: drop-shadow(0 5px 10px rgba(0, 0, 0, 0.2));
+  display: block;
+}
+
+.floating-icon:hover {
+  transform: scale(1.1);
+  background: rgba(255, 255, 255, 0);
+}
+
+@keyframes float {
+  0% {
+    transform: translateY(0px);
+  }
+
+  50% {
+    transform: translateY(-8px);
+  }
+
+  100% {
+    transform: translateY(0px);
+  }
+}
+
+/* Specific Positions based on the NEW user image */
+/* Note: Adjust percentages to match the layout closely */
+
+/* 1. Foto Mempelai (Kiri atas) */
+.hotspot-photo {
+  top: 17%;
+  left: 2%;
+}
+
+.hotspot-photo .floating-icon {
+  width: 270px;
+}
+
+/* 2. Jam & Peta (Kanan tengah) */
+.hotspot-clock {
+  top: 47%;
+  right: 10%;
+}
+
+.hotspot-clock .floating-icon {
+  width: 122px;
+}
+
+/* 3. RSVP - iPad di meja (Tengah bawah) */
+.hotspot-rsvp {
+  bottom: 22%;
+  left: 55%;
+  transform: translateX(-50%);
+}
+
+.hotspot-rsvp .floating-icon {
+  width: 207px;
+}
+
+/* 4. Amplop Ucapan (Kanan bawah) */
+.hotspot-ucapan {
+  bottom: 25%;
+  right: -14%;
+}
+
+.hotspot-ucapan .floating-icon {
+  width: 166px;
+}
+
+/* 5. Maps (Kiri bawah) */
+.hotspot-maps {
+  top: 46%;
+  left: 5%;
+}
+
+.hotspot-maps .floating-icon {
+  width: 170px;
+}
+
+/* Music Toggle Button */
+.music-toggle-btn {
+  position: absolute;
+  bottom: 20px;
+  right: 20px;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  background: white;
+  border: 2px solid var(--primary-color);
+  font-size: 1.5rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  z-index: 50;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
+  animation: pulse-music 2s infinite;
+}
+
+.music-toggle-btn.muted {
+  animation: none;
+  border-color: #999;
+  filter: grayscale(100%);
+}
+
+.music-toggle-btn:hover {
+  transform: scale(1.1);
+}
+
+@keyframes pulse-music {
+  0% {
+    box-shadow: 0 0 0 0 rgba(220, 179, 166, 0.7);
+  }
+
+  70% {
+    box-shadow: 0 0 0 10px rgba(220, 179, 166, 0);
+  }
+
+  100% {
+    box-shadow: 0 0 0 0 rgba(220, 179, 166, 0);
+  }
+}
+
+/* Forms styling inside modals */
+.rsvp-form,
+.ucapan-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  text-align: left;
+}
+
+.rsvp-form input,
+.rsvp-form select,
+.ucapan-form input,
+.ucapan-form textarea {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid var(--secondary-color);
+  border-radius: 8px;
+  font-family: var(--font-body);
+  font-size: 0.95rem;
+  outline: none;
+}
+
+.rsvp-form input:focus,
+.rsvp-form select:focus,
+.ucapan-form input:focus,
+.ucapan-form textarea:focus {
+  border-color: var(--primary-color);
+  box-shadow: 0 0 0 2px rgba(220, 179, 166, 0.3);
+}
+
+.ucapan-form textarea {
+  resize: vertical;
+}
+
+.guestbook-list {
+  max-height: 250px;
+  overflow-y: auto;
+  padding-right: 10px;
+  border-top: 1px solid #eaeaea;
+  padding-top: 1.5rem;
+}
+
+.guestbook-item {
+  background: white;
+  padding: 15px;
+  border-radius: 8px;
+  margin-bottom: 10px;
+  border: 1px solid #f0e6e4;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.02);
+}
+
+.guestbook-item strong {
+  display: block;
+  color: var(--secondary-color);
+  font-size: 0.95rem;
+  margin-bottom: 5px;
+}
+
+.guestbook-item p {
+  color: var(--text-main);
+  font-size: 0.9rem;
+  line-height: 1.4;
+}
+
+/* Custom Scrollbar for Guestbook */
+.guestbook-list::-webkit-scrollbar {
+  width: 6px;
+}
+
+.guestbook-list::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.guestbook-list::-webkit-scrollbar-thumb {
+  background: var(--primary-color);
+  border-radius: 10px;
+}
+
+/* Modal Profile Photo Styling */
+.modal-profile {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 10px;
+}
+
+.modal-bride-photo,
+.modal-groom-photo {
+  width: 150px;
+  /* height: 150px; */
+  object-fit: cover;
+  border-radius: 50%;
+  border: 4px solid var(--primary-color);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  margin-bottom: 5px;
+}
+
+.bride-name,
+.groom-name {
+  color: var(--secondary-color);
+  font-family: var(--font-title);
+  font-size: 1.5rem;
+  margin: 0;
+}
+
+.parents-name {
+  color: var(--text-main);
+  font-size: 0.9rem;
+  margin: 0;
+  line-height: 1.4;
+}
+
+.divider {
+  font-family: var(--font-title);
+  color: var(--primary-color);
+  font-size: 2rem;
+  margin: 10px 0;
+}
