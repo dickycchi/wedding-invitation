@@ -108,36 +108,39 @@ const MainPage = ({ isMuted, toggleMute }) => {
   };
 
   return (
-    <div className="main-page interactive-room fade-in">
-      <div className="scene-container">
-        <img src={roomBg} alt="Wedding Room" className="scene-bg" />
+    <>
+      <div className="main-page interactive-room fade-in">
+        <div className="scene-container">
+          <img src={roomBg} alt="Wedding Room" className="scene-bg" />
 
-        {/* Hotspots */}
-        <div className="hotspot hotspot-photo" onClick={() => openModal('couple')}>
-          <img src={iconPhoto} alt="Mempelai" className="floating-icon" />
+          {/* Hotspots */}
+          <div className="hotspot hotspot-photo" onClick={() => openModal('couple')}>
+            <img src={iconPhoto} alt="Mempelai" className="floating-icon" />
+          </div>
+
+          <div className="hotspot hotspot-clock" onClick={() => openModal('location')}>
+            <img src={iconClock} alt="Waktu & Lokasi" className="floating-icon" />
+          </div>
+
+          <div className="hotspot hotspot-rsvp" onClick={() => openModal('rsvp')}>
+            <img src={iconRsvp} alt="RSVP" className="floating-icon" />
+          </div>
+
+          <div className="hotspot hotspot-ucapan" onClick={() => openModal('ucapan')}>
+            <img src={iconUcapan} alt="Ucapan" className="floating-icon" />
+          </div>
+
+          <div className="hotspot hotspot-maps" onClick={() => openModal('maps')}>
+            <img src={iconMaps} alt="Maps" className="floating-icon" />
+          </div>
+
+          <button className={`music-toggle-btn ${isMuted ? 'muted' : ''}`} onClick={toggleMute}>
+            {isMuted ? '🔇' : '🎵'}
+          </button>
         </div>
-
-        <div className="hotspot hotspot-clock" onClick={() => openModal('location')}>
-          <img src={iconClock} alt="Waktu & Lokasi" className="floating-icon" />
-        </div>
-
-        <div className="hotspot hotspot-rsvp" onClick={() => openModal('rsvp')}>
-          <img src={iconRsvp} alt="RSVP" className="floating-icon" />
-        </div>
-
-        <div className="hotspot hotspot-ucapan" onClick={() => openModal('ucapan')}>
-          <img src={iconUcapan} alt="Ucapan" className="floating-icon" />
-        </div>
-
-        <div className="hotspot hotspot-maps" onClick={() => openModal('maps')}>
-          <img src={iconMaps} alt="Maps" className="floating-icon" />
-        </div>
-
-        <button className={`music-toggle-btn ${isMuted ? 'muted' : ''}`} onClick={toggleMute}>
-          {isMuted ? '🔇' : '🎵'}
-        </button>
       </div>
 
+      {/* All modals rendered OUTSIDE .interactive-room to avoid overflow:hidden clipping */}
       {showInstruction && (
         <Modal onClose={() => setShowInstruction(false)} title="Selamat Datang!">
           <p style={{ marginBottom: '1rem', color: 'var(--text-main)' }}>Atas izin Allah yang Maha Pengasih lagi Maha Penyayang,
@@ -149,7 +152,6 @@ const MainPage = ({ isMuted, toggleMute }) => {
         </Modal>
       )}
 
-      {/* Modals for Hotspots */}
       {activeModal === 'couple' && (
         <Modal onClose={closeModal} title="Profil Mempelai">
           <div className="modal-profile">
@@ -250,7 +252,7 @@ const MainPage = ({ isMuted, toggleMute }) => {
           </div>
         </Modal>
       )}
-    </div>
+    </>
   );
 };
 
