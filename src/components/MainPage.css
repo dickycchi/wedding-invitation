@@ -1,10 +1,31 @@
+/* ===== INTERACTIVE ROOM - PROPORTIONAL LAYOUT ===== */
+
+/* Outer wrapper: fills the viewport, centers the scene */
 .interactive-room {
   width: 100%;
   height: 100%;
-  background-size: cover;
-  background-position: center;
-  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: #1a1015;
   overflow: hidden;
+}
+
+/* Scene container: sized by the image, all hotspots are relative to this */
+.scene-container {
+  position: relative;
+  max-width: 100%;
+  max-height: 100%;
+}
+
+/* The background image drives the container's dimensions */
+.scene-bg {
+  display: block;
+  width: 100%;
+  height: 100%;
+  max-width: 100vw;
+  max-height: 100vh;
+  object-fit: contain;
 }
 
 /* Base Hotspot Styling */
@@ -18,10 +39,9 @@
   z-index: 10;
 }
 
-/* Floating Icon Animation */
+/* Floating Icon - sizes use % of scene-container width */
 .floating-icon {
-  width: 80px;
-  /* sesuaikan ukuran sesuai gambar kamu */
+  width: 100%;
   height: auto;
   object-fit: contain;
   animation: float 3.5s ease-in-out infinite;
@@ -49,58 +69,42 @@
   }
 }
 
-/* Specific Positions based on the NEW user image */
-/* Note: Adjust percentages to match the layout closely */
+/* ===== HOTSPOT POSITIONS & SIZES (all in % of scene-container) ===== */
 
 /* 1. Foto Mempelai (Kiri atas) */
 .hotspot-photo {
   top: 17%;
-  left: 2%;
-}
-
-.hotspot-photo .floating-icon {
-  width: 270px;
+  left: 19%;
+  width: 36%;
 }
 
 /* 2. Jam & Peta (Kanan tengah) */
 .hotspot-clock {
   top: 47%;
-  right: 10%;
-}
-
-.hotspot-clock .floating-icon {
-  width: 122px;
+  right: 23.5%;
+  width: 17%;
 }
 
 /* 3. RSVP - iPad di meja (Tengah bawah) */
 .hotspot-rsvp {
-  bottom: 22%;
-  left: 55%;
+  bottom: 22.2%;
+  left: 53.8%;
   transform: translateX(-50%);
-}
-
-.hotspot-rsvp .floating-icon {
-  width: 207px;
+  width: 28%;
 }
 
 /* 4. Amplop Ucapan (Kanan bawah) */
 .hotspot-ucapan {
   bottom: 25%;
-  right: -14%;
-}
-
-.hotspot-ucapan .floating-icon {
-  width: 166px;
+  right: 6%;
+  width: 25%;
 }
 
 /* 5. Maps (Kiri bawah) */
 .hotspot-maps {
-  top: 46%;
-  left: 5%;
-}
-
-.hotspot-maps .floating-icon {
-  width: 170px;
+  top: 44.6%;
+  left: 20%;
+  width: 24%;
 }
 
 /* Music Toggle Button */
@@ -148,7 +152,7 @@
   }
 }
 
-/* Forms styling inside modals */
+/* ===== FORMS STYLING INSIDE MODALS ===== */
 .rsvp-form,
 .ucapan-form {
   display: flex;
@@ -238,7 +242,7 @@
 .modal-bride-photo,
 .modal-groom-photo {
   width: 150px;
-  /* height: 150px; */
+  height: 150px;
   object-fit: cover;
   border-radius: 50%;
   border: 4px solid var(--primary-color);

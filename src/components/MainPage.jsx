@@ -108,7 +108,35 @@ const MainPage = ({ isMuted, toggleMute }) => {
   };
 
   return (
-    <div className="main-page interactive-room fade-in" style={{ backgroundImage: `url(${roomBg})` }}>
+    <div className="main-page interactive-room fade-in">
+      <div className="scene-container">
+        <img src={roomBg} alt="Wedding Room" className="scene-bg" />
+
+        {/* Hotspots */}
+        <div className="hotspot hotspot-photo" onClick={() => openModal('couple')}>
+          <img src={iconPhoto} alt="Mempelai" className="floating-icon" />
+        </div>
+
+        <div className="hotspot hotspot-clock" onClick={() => openModal('location')}>
+          <img src={iconClock} alt="Waktu & Lokasi" className="floating-icon" />
+        </div>
+
+        <div className="hotspot hotspot-rsvp" onClick={() => openModal('rsvp')}>
+          <img src={iconRsvp} alt="RSVP" className="floating-icon" />
+        </div>
+
+        <div className="hotspot hotspot-ucapan" onClick={() => openModal('ucapan')}>
+          <img src={iconUcapan} alt="Ucapan" className="floating-icon" />
+        </div>
+
+        <div className="hotspot hotspot-maps" onClick={() => openModal('maps')}>
+          <img src={iconMaps} alt="Maps" className="floating-icon" />
+        </div>
+
+        <button className={`music-toggle-btn ${isMuted ? 'muted' : ''}`} onClick={toggleMute}>
+          {isMuted ? '🔇' : '🎵'}
+        </button>
+      </div>
 
       {showInstruction && (
         <Modal onClose={() => setShowInstruction(false)} title="Selamat Datang!">
@@ -120,31 +148,6 @@ const MainPage = ({ isMuted, toggleMute }) => {
           </button>
         </Modal>
       )}
-
-      {/* Hotspots */}
-      <div className="hotspot hotspot-photo" onClick={() => openModal('couple')}>
-        <img src={iconPhoto} alt="Mempelai" className="floating-icon" />
-      </div>
-
-      <div className="hotspot hotspot-clock" onClick={() => openModal('location')}>
-        <img src={iconClock} alt="Waktu & Lokasi" className="floating-icon" />
-      </div>
-
-      <div className="hotspot hotspot-rsvp" onClick={() => openModal('rsvp')}>
-        <img src={iconRsvp} alt="RSVP" className="floating-icon" />
-      </div>
-
-      <div className="hotspot hotspot-ucapan" onClick={() => openModal('ucapan')}>
-        <img src={iconUcapan} alt="Ucapan" className="floating-icon" />
-      </div>
-
-      <div className="hotspot hotspot-maps" onClick={() => openModal('maps')}>
-        <img src={iconMaps} alt="Maps" className="floating-icon" />
-      </div>
-
-      <button className={`music-toggle-btn ${isMuted ? 'muted' : ''}`} onClick={toggleMute}>
-        {isMuted ? '🔇' : '🎵'}
-      </button>
 
       {/* Modals for Hotspots */}
       {activeModal === 'couple' && (
