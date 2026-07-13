@@ -7,8 +7,19 @@ import iconClock from '../assets/jam.png';
 import iconRsvp from '../assets/tablet.png';
 import iconUcapan from '../assets/surat.png';
 import iconMaps from '../assets/globe.png';
-import fotoBride from '../assets/bride-pic.jpg';
-import fotoGroom from '../assets/groom-pic.jpeg';
+import iconAlbum from '../assets/album.png';
+import fotoBride from '../assets/Bride1.jpeg';
+import fotoGroom from '../assets/Groom1.jpeg';
+import gallery1 from '../assets/Foto1.jpg';
+import gallery2 from '../assets/Foto2.jpg';
+import gallery3 from '../assets/Foto3.jpg';
+import gallery4 from '../assets/Foto4.jpg';
+import gallery5 from '../assets/Foto5.jpg';
+import gallery6 from '../assets/Foto6.jpg';
+import gallery7 from '../assets/Foto7.jpg';
+import gallery8 from '../assets/Foto8.jpg';
+import gallery9 from '../assets/Foto9.jpg';
+import gallery10 from '../assets/Foto10.jpg';
 import { supabase } from '../lib/supabaseClient';
 
 const MainPage = ({ isMuted, toggleMute }) => {
@@ -134,6 +145,10 @@ const MainPage = ({ isMuted, toggleMute }) => {
             <img src={iconMaps} alt="Maps" className="floating-icon" />
           </div>
 
+          <div className="hotspot hotspot-album" onClick={() => openModal('album')}>
+            <img src={iconAlbum} alt="Album" className="floating-icon" />
+          </div>
+
           <button className={`music-toggle-btn ${isMuted ? 'muted' : ''}`} onClick={toggleMute}>
             {isMuted ? '🔇' : '🎵'}
           </button>
@@ -146,6 +161,7 @@ const MainPage = ({ isMuted, toggleMute }) => {
           <p style={{ marginBottom: '1rem', color: 'var(--text-main)' }}>Atas izin Allah yang Maha Pengasih lagi Maha Penyayang,
             kami bermaksud mengundang Anda untuk hadir dan memberikan doa restu di hari bahagia kami.</p>
           <p style={{ color: 'var(--secondary-color)', lineHeight: 1.5 }}>Silakan jelajahi ruangan ini untuk melihat detail acara pernikahan kami.</p>
+          <p style={{ color: 'var(--secondary-color)', lineHeight: 1.5 }}>Klik icon yang bergerak, ya!</p>
           <button className="map-btn" style={{ marginTop: '1.5rem' }} onClick={() => setShowInstruction(false)}>
             Mulai Eksplorasi
           </button>
@@ -248,6 +264,25 @@ const MainPage = ({ isMuted, toggleMute }) => {
               ) : (
                 <p style={{ textAlign: 'center', fontSize: '0.9rem', color: '#999' }}>Belum ada ucapan. Jadilah yang pertama!</p>
               )}
+            </div>
+          </div>
+        </Modal>
+      )}
+
+      {activeModal === 'album' && (
+        <Modal onClose={closeModal} title="Galeri Foto">
+          <div className="modal-album">
+            <div className="gallery-grid">
+              <img src={gallery1} alt="Gallery 1" className="gallery-img" />
+              <img src={gallery2} alt="Gallery 2" className="gallery-img" />
+              <img src={gallery3} alt="Gallery 3" className="gallery-img" />
+              <img src={gallery4} alt="Gallery 4" className="gallery-img" />
+              <img src={gallery5} alt="Gallery 5" className="gallery-img" />
+              <img src={gallery6} alt="Gallery 6" className="gallery-img" />
+              <img src={gallery7} alt="Gallery 7" className="gallery-img" />
+              <img src={gallery8} alt="Gallery 8" className="gallery-img" />
+              <img src={gallery9} alt="Gallery 9" className="gallery-img" />
+              <img src={gallery10} alt="Gallery 10" className="gallery-img" />
             </div>
           </div>
         </Modal>
